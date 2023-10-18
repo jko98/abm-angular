@@ -12,7 +12,7 @@ $conexion = new mysqli($servidor, $usuario, $password, $nombreBaseDatos);
 
 // Consulta datos y recepciona una clave para consultar dichos datos con dicha clave
 if (isset($_GET["consultar"])){
-    $sqldeEmpleados = mysqli_query($conexion,"SELECT * FROM empleados WHERE id=".$_GET["consultar"]);
+    $sqldeEmpleados = mysqli_query($conexion,"SELECT * FROM datos WHERE id=".$_GET["consultar"]);
     if(mysqli_num_rows($sqldeEmpleados) > 0){
         $empleados = mysqli_fetch_all($sqldeEmpleados,MYSQLI_ASSOC);
         echo json_encode($empleaados);
@@ -22,7 +22,7 @@ if (isset($_GET["consultar"])){
 }
 //borrar pero se le debe de enviar una clave ( para borrado )
 if (isset($_GET["borrar"])){
-    $sqldeEmpleados = mysqli_query($conexion,"DELETE FROM empleados WHERE id=".$_GET["borrar"]);
+    $sqldeEmpleados = mysqli_query($conexion,"DELETE FROM datos WHERE id=".$_GET["borrar"]);
     if($sqldeEmpleados){
         echo json_encode(["success"=>1]);
         exit();
@@ -36,7 +36,7 @@ if(isset($_GET["insertar"])){
     $correo=$data->correo;
         if(($correo!="")&&($nombre!="")){
             
-    $sqldeEmpleados = mysqli_query($conexion,"INSERT INTO empleados(nombre,correo) VALUES('$nombre','$correo') ");
+    $sqldeEmpleados = mysqli_query($conexion,"INSERT INTO datos (nombre,correo) VALUES('$nombre','$correo') ");
     echo json_encode(["success"=>1]);
         }
     exit();
@@ -50,15 +50,15 @@ if(isset($_GET["actualizar"])){
     $nombre=$data->nombre;
     $correo=$data->correo;
     
-    $sqldeEmpleados = mysqli_query($conexion,"UPDATE empleados SET nombre='$nombre',correo='$correo' WHERE id='$id'");
+    $sqldeEmpleados = mysqli_query($conexion,"UPDATE datos SET nombre='$nombre',correo='$correo' WHERE id='$id'");
     echo json_encode(["success"=>1]);
     exit();
 }
 // Consulta todos los registros de la tabla empleados
-$sqldeEmpleados = mysqli_query($conexion,"SELECT * FROM empleados ");
+$sqldeEmpleados = mysqli_query($conexion,"SELECT * FROM datos ");
 if(mysqli_num_rows($sqldeEmpleados) > 0){
-    $empleaados = mysqli_fetch_all($sqldeEmpleados,MYSQLI_ASSOC);
-    echo json_encode($empleaados);
+    $empleados = mysqli_fetch_all($sqldeEmpleados,MYSQLI_ASSOC);
+    echo json_encode($empleados);
 }
 else{ echo json_encode([["success"=>0]]); }
 

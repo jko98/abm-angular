@@ -9,9 +9,13 @@ import { Empleado } from './empleado';
 })
 export class CrudService {
  
-  api: string=''
+  API: string='http://localhost/empleados/'
 
-  constructor() { 
+  constructor(private clienteHttp:HttpClient){ 
+ 
+  }
 
+  AgregarEmpleado(datosEmpleado:Empleado):Observable<any>{
+    return this.clienteHttp.post(this.API+"?insertar=1",datosEmpleado)
   }
 }
