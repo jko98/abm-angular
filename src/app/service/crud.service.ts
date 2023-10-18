@@ -18,4 +18,17 @@ export class CrudService {
   AgregarEmpleado(datosEmpleado:Empleado):Observable<any>{
     return this.clienteHttp.post(this.API+"?insertar=1",datosEmpleado)
   }
+
+  MostrarEmpleados(){
+    return this.clienteHttp.get(this.API);
+  }
+  
+  EliminarEmpleado(id:any):Observable<any>{
+    return this.clienteHttp.get(this.API+"?borrar="+id);
+  }
+
+  ObtenerEmpleado(id:any):Observable<any>{
+    return this.clienteHttp.get(this.API+"?consultar="+id);
+  }
+
 }

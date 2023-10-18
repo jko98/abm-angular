@@ -15,7 +15,7 @@ if (isset($_GET["consultar"])){
     $sqldeEmpleados = mysqli_query($conexion,"SELECT * FROM datos WHERE id=".$_GET["consultar"]);
     if(mysqli_num_rows($sqldeEmpleados) > 0){
         $empleados = mysqli_fetch_all($sqldeEmpleados,MYSQLI_ASSOC);
-        echo json_encode($empleaados);
+        echo json_encode($empleados);
         exit();
     }
     else{  echo json_encode(["success"=>0]); }

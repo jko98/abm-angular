@@ -15,11 +15,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">43</td>
-                        <td>joaquin</td>
-                        <td>algo12@hotmail.com</td>
-                        <td><a routerLink="/modificar-empleado/1">Modificar</a> | Eliminar</td>
+                    <tr *ngFor="let empleado of Empleados; let iControl=index">
+                        <td scope="row">{{ empleado.id }}</td>
+                        <td>{{ empleado.nombre}} </td>
+                        <td>{{empleado.correo}} </td>
+                        <td><a  class="btn btn-primary" routerLink="/modificar-empleado/{{ empleado.id }}">Modificar</a> | 
+                            <a (click)="eliminarRegistro(empleado.id, iControl)" id="" class="btn btn-danger" role="button">Borrar</a>
+                        </td>
                     </tr>
                    
                 </tbody>

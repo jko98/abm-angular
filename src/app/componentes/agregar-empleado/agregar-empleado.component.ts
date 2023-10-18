@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import{FormGroup, FormBuilder} from '@angular/forms';
-import { from } from 'rxjs';
+// import { from } from 'rxjs';
 import { CrudService } from 'src/app/service/crud.service';
+import{Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-agregar-empleado',
@@ -13,7 +15,8 @@ export class AgregarEmpleadoComponent implements OnInit{
 
   constructor(
     public formulario:FormBuilder,
-    private crudService:CrudService
+    private crudService:CrudService,
+    private ruteador:Router
     ){
   
    this.formDeEmpleados=this.formulario.group({
@@ -32,5 +35,7 @@ ngOnInit(): void {
   console.log("presionado"); 
   console.log(this.formDeEmpleados.value);
   this.crudService.AgregarEmpleado(this.formDeEmpleados.value).subscribe();
+
+  this.ruteador.navigateByUrl('/listar-empleado');
   }
 }
