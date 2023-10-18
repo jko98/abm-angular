@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 13-04-2021 a las 18:43:36
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 18-10-2023 a las 16:33:42
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,34 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `empleados`
 --
+CREATE DATABASE IF NOT EXISTS `empleados` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `empleados`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empleados`
+-- Estructura de tabla para la tabla `datos`
 --
 
-CREATE TABLE `empleados` (
+CREATE TABLE `datos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `empleados`
+-- Volcado de datos para la tabla `datos`
 --
 
-INSERT INTO `empleados` (`id`, `nombre`, `correo`) VALUES
-(65, 'Oscar', 'oscaruh@develoteca.com');
+INSERT INTO `datos` (`id`, `nombre`, `correo`) VALUES
+(65, 'Alfredo', 'alfa2345@gmail.com');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `empleados`
+-- Indices de la tabla `datos`
 --
-ALTER TABLE `empleados`
+ALTER TABLE `datos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -55,9 +57,9 @@ ALTER TABLE `empleados`
 --
 
 --
--- AUTO_INCREMENT de la tabla `empleados`
+-- AUTO_INCREMENT de la tabla `datos`
 --
-ALTER TABLE `empleados`
+ALTER TABLE `datos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
