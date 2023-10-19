@@ -9,17 +9,25 @@ import { CrudService } from 'src/app/service/crud.service';
   styleUrls: ['./modificar-empleado.component.css']
 })
 export class ModificarEmpleadoComponent implements OnInit {
-
+formDeEmpleados:FormGroup;
 elID:any;
 
-constructor(private activeRoute:ActivatedRoute, private crudService:CrudService){
+constructor(private activeRoute:ActivatedRoute, private crudService:CrudService, public formulario:FormBuilder){
   this.elID=this.activeRoute.snapshot.paramMap.get('id');
   console.log(this.elID);
   this.crudService.ObtenerEmpleado(this.elID).subscribe(
     respuesta=>{
       console.log(respuesta);
+      this.formDeEmpleados.setValue({
+        nombre:respuesta[0]['nombre'],
+        correo:respuesta[0]['correo']
+      });
     }
   );
+  this.formDeEmpleados=this.formulario.group({
+    nombre:[''],
+    correo:['']
+  });
 }
 
 ngOnInit(): void {
