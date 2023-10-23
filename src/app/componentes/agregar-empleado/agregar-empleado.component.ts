@@ -34,8 +34,10 @@ ngOnInit(): void {
   enviarDato():any{
   console.log("presionado"); 
   console.log(this.formDeEmpleados.value);
-  this.crudService.AgregarEmpleado(this.formDeEmpleados.value).subscribe();
+  this.crudService.AgregarEmpleado(this.formDeEmpleados.value).subscribe(respuesta=>{
+    this.ruteador.navigateByUrl('/listar-empleado');
+  });
 
-  this.ruteador.navigateByUrl('/listar-empleado');
+  
   }
 }

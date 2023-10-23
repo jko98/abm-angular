@@ -12,7 +12,12 @@ export class ModificarEmpleadoComponent implements OnInit {
 formDeEmpleados:FormGroup;
 elID:any;
 
-constructor(private activeRoute:ActivatedRoute, private crudService:CrudService, public formulario:FormBuilder){
+constructor(
+  private activeRoute:ActivatedRoute, 
+  private crudService:CrudService, 
+  public formulario:FormBuilder,
+  private ruteador:Router
+  ){
   this.elID=this.activeRoute.snapshot.paramMap.get('id');
   console.log(this.elID);
   this.crudService.ObtenerEmpleado(this.elID).subscribe(
@@ -32,6 +37,14 @@ constructor(private activeRoute:ActivatedRoute, private crudService:CrudService,
 
 ngOnInit(): void {
   
+}
+
+enviarDato():any{
+  console.log(this.elID);
+  console.log(this.formDeEmpleados.value);
+  this.crudService.ModificarEmpleado(this.elID,this.formDeEmpleados.value).subscribe(()=>{
+    this.ruteador.navigateByUrl('/listar-empleado');
+  });
 }
 
 

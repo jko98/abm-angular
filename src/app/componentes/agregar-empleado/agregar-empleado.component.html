@@ -4,19 +4,19 @@
         Agregar empleado
     </div>
     <div class="card-body">
-        <form [formGroup]="formDeEmpleados" (ngSubmit)="enviarDato()">
+        <form ngNativeValidate [formGroup]="formDeEmpleados" (ngSubmit)="enviarDato()">
             <div class="mb-3">
                 <label for="" class="form-label">Nombre</label>
-                <input formControlName="nombre" type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                <input required formControlName="nombre" type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Email</label>
-                <input formControlName="correo" type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+                <input required formControlName="correo" type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
 
             </div>
             <div class="btn-group" role="group" aria-label="Button group name">
                 <button type="submit" class="btn btn-success">Agregar</button>
-                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" routerLink="/listar-empleado" class="btn btn-primary">Cancelar</button>
             </div>
         </form>
     </div>
